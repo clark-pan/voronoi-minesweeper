@@ -1,12 +1,19 @@
 {
   "jspm": {
     "dependencies": {
+      "lodash": "npm:lodash@^3.10.1",
+      "paperjs/paper.js": "github:paperjs/paper.js@^0.9.25",
       "voronoi": "npm:voronoi@^1.0.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
+    },
+    "overrides": {
+      "github:paperjs/paper.js@0.9.25": {
+        "main": "dist/paper-full.js"
+      }
     }
   }
 }
