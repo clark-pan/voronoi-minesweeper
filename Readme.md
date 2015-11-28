@@ -22,6 +22,10 @@ jspm install
 
 Serve the root directory as public (If you installed http-server then `http-server` in the root directory)
 
+## Github pages
+
+To get this to work on Github pages, you need to change the baseURL in config.js to be the repo name
+
 ## Credits
 
 Massive credits go to [@gorhill](https://github.com/gorhill) for his excellent [Javascript-Voronoi](https://github.com/gorhill/Javascript-Voronoi) library
