@@ -1,21 +1,92 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Minesweeper</title>
+		<title>Voronoi Minesweeper</title>
 		<style>
 			html, body {
 				height: 100%;
 				padding: 0;
 				margin: 0;
 			}
-			#app {
-				width: 100%;
+
+			* {
+				box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+			}
+
+			.container {
+				display: flex;
+				flex-direction: column;
 				height: 100%;
+				overflow: hidden;
+			}
+
+			.header {
+				height : 30px;
+				display: flex;
+				line-height: 30px;
+			}
+				.header-left {
+					padding: 0 10px;
+				}
+
+				.header-center {
+					flex: 1;
+					text-align: center;
+				}
+
+				.header-right {
+					padding: 0 10px;
+				}
+
+			.main {
+				flex: 1;
+			}
+
+			#app {
+				position: relative;
+			}
+			.hidden {
+				display: none;
+			}
+
+			dialog {
+				min-width: 300px;
 			}
 		</style>
 	</head>
 	<body>
-		<canvas id="app" resize="true"></canvas>
+		<div class="container">
+			<div class="header">
+				<div class="header-left">
+					&bull; <span id="label-mine-count">99</span>
+				</div>
+				<div class="header-center">
+					Voronoi Minesweeper
+				</div>
+				<div class="header-right">
+					<button id="button-restart">Restart</button>
+					<select id="select-difficulty">
+						<option value="beginner" selected>Beginner</option>
+						<option value="intermediate">Intermediate</option>
+						<option value="expert">Expert</option>
+						<option value="master">Master</option>
+					</select>
+					<button id="button-help" onclick="document.getElementById('dialog-help').showModal()">Help</button>
+				</div>
+			</div>
+			<div class="main">
+				<canvas id="app"></canvas>
+			</div>
+		</div>
+		<dialog id="dialog-help">
+			<ul>
+				<li>Left click to check for empty spaces</li>
+				<li>Right click to place a flag</li>
+				<li>Shift + left on a numbered tile that has the same number of flags nearby to reveal all the nearby tiles</li>
+			</ul>
+			<button id="button-close" onclick="document.getElementById('dialog-help').close()">Close</button>
+		</dialog>
 		<script src="/jspm_packages/system.js"></script>
 		<script src="/config.js"></script>
 		<script>

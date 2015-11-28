@@ -1,47 +1,86 @@
-import { default as paper } from "paperjs/paper.js"
-import Voronoi from "voronoi"
-import * as _ from "lodash"
+import ViewController from "./src/viewcontroller";
 
-let { Point, Path, Tool } = paper;
-let { Circle } = paper.Shape;
-let canvas = document.getElementById('app');
-let voronoi = new Voronoi();
+window.minesweeper = new ViewController();
 
-paper.setup(canvas);
+// let canvas = document.getElementById('app');
+// let context = canvas.getContext("2d");
+// canvas.width = canvas.parentNode.clientWidth;
+// canvas.height = canvas.parentNode.clientHeight;
 
-let state = {
-	points : _.times(100, () => {
-		return new Point({
-			x : Math.random() * paper.view.viewSize.width,
-			y : Math.random() * paper.view.viewSize.height
-		});
-	})
-}
+// let { width, height } = canvas;
 
-paper.view.draw();
+// let mousePoint = null;
+// let mouseSite = null;
+// canvas.onmousemove = function(e){
+// 	if(!mousePoint) mousePoint = {};
+// 	//TODO replace layerX and layerY with cross-browser compatible position calculations
+// 	mousePoint.x = e.layerX;
+// 	mousePoint.y = e.layerY;
 
-let mouse = new Tool();
-let p = new Point();
-mouse.on('mousemove', (e) => {
-	p = e.point;
-});
+// 	mouseSite = _.min(state.sites, (site) => {
+// 		return Vector.distSquared(site, mousePoint);
+// 	});
+// };
+// canvas.onmouseout = function(){
+// 	mousePoint = null;
+// 	mouseSite = null;
+// }
+// canvas.addEventListener('click', (e) => {
+// 	if(state.completed) return;
+// 	let targetSite = _.min(state.sites, (site) => {
+// 		return Vector.distSquared(site, {
+// 			x : e.layerX,
+// 			y : e.layerY
+// 		});
+// 	});
 
-paper.view.on('frame', () => {
-	paper.clear();
-	paper.setup(canvas);
-	let bbox = {
-		xl : 0,
-		xr : paper.view.viewSize.width,
-		yt : 0,
-		yb : paper.view.viewSize.height
-	}
-	let diagram = voronoi.compute(state.points.concat([p]), bbox);
+// 	if(targetSite.isFlagged) return;
 
-	_.each(diagram.edges, (edge) => {
-		new Path.Line({
-			from : new Point(edge.va),
-			to : new Point(edge.vb),
-			strokeColor : 'black'
-		});
-	});
-});
+// 	if(event.shiftKey){
+// 		if(targetSite.isRevealed){
+// 			let flagged = _.filter(state.getNeighbours(targetSite), 'isFlagged');
+// 			if(flagged.length === targetSite.neighbourBombs){
+// 				state.revealAllNeighbours(targetSite);
+// 			}
+// 		}
+// 	} else {
+// 		if(targetSite.neighbourBombs === 0){
+// 			state.revealAllNeighbours(targetSite);
+// 		} else {
+// 			state.revealSite(targetSite);
+// 		}
+// 	}
+
+// 	if(state.completed){
+// 		if(state.victory){
+// 			alert('Winner!');
+// 		} else {
+// 			alert('Boooooom!');
+// 		}
+// 	}
+// });
+
+// // Using contextmenu as a proxy for right click
+// canvas.addEventListener('contextmenu', (e) => {
+// 	e.preventDefault();
+// 	let targetSite = _.min(state.sites, (site) => {
+// 		return Vector.distSquared(site, {
+// 			x : e.layerX,
+// 			y : e.layerY
+// 		});
+// 	});
+
+// 	if(targetSite.isRevealed) return;
+
+// 	targetSite.isFlagged = !targetSite.isFlagged;
+// });
+
+// let state = new State(width, height, 30 * 16, 99);
+
+// function tick(){
+// 	Physics.resolve(state.diagram.vertices, mousePoint);
+// 	Graphics.draw(context, state, mouseSite);
+// 	requestAnimationFrame(tick);
+// }
+
+// tick();

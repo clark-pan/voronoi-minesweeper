@@ -2,7 +2,6 @@
   "jspm": {
     "dependencies": {
       "lodash": "npm:lodash@^3.10.1",
-      "paperjs/paper.js": "github:paperjs/paper.js@^0.9.25",
       "voronoi": "npm:voronoi@^1.0.0"
     },
     "devDependencies": {
