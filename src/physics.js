@@ -2,9 +2,9 @@ import * as _ from "lodash";
 
 import * as Vector from "./vector";
 
-const MOUSE_EFFECT_SIZE = 50,
+const MOUSE_EFFECT_SIZE = 25,
 	MOUSE_FORCE = 1,
-	ANCHOR_EFFECT_SIZE = 100,
+	ANCHOR_EFFECT_SIZE = 200,
 	ANCHOR_FORCE = 1,
 	FRICTION = 0.5;
 
