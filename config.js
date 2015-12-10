@@ -11,6 +11,31 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+  bundles: {
+    "index-bundle.js": [
+      "index.js",
+      "src/viewcontroller.js",
+      "npm:lodash@3.10.1",
+      "src/state.js",
+      "src/vector.js",
+      "src/physics.js",
+      "src/graphics.js",
+      "npm:babel-runtime@5.8.34/helpers/create-class",
+      "npm:babel-runtime@5.8.34/helpers/class-call-check",
+      "npm:lodash@3.10.1/index",
+      "npm:voronoi@1.0.0",
+      "npm:babel-runtime@5.8.34/core-js/object/define-properties",
+      "npm:babel-runtime@5.8.34/core-js/object/define-property",
+      "github:jspm/nodelibs-process@0.1.2",
+      "npm:core-js@1.2.6/library/fn/object/define-properties",
+      "npm:voronoi@1.0.0/rhill-voronoi-core",
+      "npm:core-js@1.2.6/library/fn/object/define-property",
+      "github:jspm/nodelibs-process@0.1.2/index",
+      "npm:core-js@1.2.6/library/modules/$",
+      "npm:process@0.11.2",
+      "npm:process@0.11.2/browser"
+    ]
+  },
 
   map: {
     "babel": "npm:babel-core@5.8.34",

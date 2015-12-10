@@ -1,0 +1,1 @@
+module.exports = require("npm:voronoi@1.0.0/rhill-voronoi-core");
