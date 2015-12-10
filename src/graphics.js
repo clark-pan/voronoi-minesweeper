@@ -11,6 +11,7 @@ export function draw(context, state, mouseSite){
 	context.save();
 	_.each(state.diagram.edges, (edge) => {
 		context.beginPath();
+		context.setLineDash([]);
 		if(edge.lSite.isFlagged || (edge.rSite && edge.rSite.isFlagged)){
 			context.strokeWidth = 5;
 			context.strokeStyle = "red";
@@ -19,13 +20,19 @@ export function draw(context, state, mouseSite){
 			context.strokeStyle = "blue";
 		} else if(
 			edge.rSite && 
-			(
-				(edge.lSite.isRevealed && edge.rSite.isRevealed) ||
-				(!edge.lSite.isRevealed && !edge.rSite.isRevealed)
-			)
+			(edge.lSite.isRevealed && edge.rSite.isRevealed)
 		){
 			context.strokeWidth = 1;
-			context.strokeStyle = "rgba(0, 0, 0, 0.2)";
+			context.strokeStyle = "rgba(0, 0, 0, 0.3)";
+			if(edge.lSite.neighbourMines === 0 && edge.rSite.neighbourMines === 0 && !edge.lSite.isMine && !edge.rSite.isMine){
+				context.setLineDash([5, 15]);
+			}
+		} else if (
+			edge.rSite && 
+			(!edge.lSite.isRevealed && !edge.rSite.isRevealed)
+		) {
+			context.strokeWidth = 1;
+			context.strokeStyle = "rgba(0, 0, 0, 0.3)";
 		} else {
 			context.strokeWidth = 5;
 			context.strokeStyle = "black";
