@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "git checkout --detach && jspm install --force && jspm bundle index index-bundle.js --inject && git add . && git commit -m \"Release\" && git push --force origin gh-pages && git checkout -"
+    "release": "git checkout --detach && jspm install && jspm bundle index index-bundle.js --inject && git add -f . && git commit -m \"Release\" && git push -f origin HEAD:gh-pages && git checkout -"
   },
   "repository": {
     "type": "git",
