@@ -1,5 +1,5 @@
 System.config({
-  baseURL: "/",
+  baseURL: typeof window != "undefined" ? window.location.pathname : "/",
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
