@@ -1,4 +1,22 @@
 {
+  "name": "voronoi-minesweeper",
+  "description": "Minesweeper game with a mathematic twist. This was done as part of a project with the [Sydney Javascript Study Group](http://www.meetup.com/Sydney-JavaScript-Study-Group/).",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "git checkout --detach && jspm install --force && jspm bundle index index-bundle.js --inject && git add . && git commit -m \"Release\" && git push --force origin gh-pages && git checkout -"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clark-pan/voronoi-minesweeper.git"
+  },
+  "author": "Clark Pan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clark-pan/voronoi-minesweeper/issues"
+  },
+  "homepage": "https://github.com/clark-pan/voronoi-minesweeper",
   "jspm": {
     "dependencies": {
       "lodash": "npm:lodash@^3.10.1",

@@ -22,9 +22,13 @@ jspm install
 
 Serve the root directory as public (If you installed http-server then `http-server` in the root directory)
 
-## Github pages
+## Release
 
-To get this to work on Github pages, you need to change the baseURL in config.js to be the repo name
+This is designed to release to github pages. Run
+
+```
+npm release
+```
 
 ## Credits
 
