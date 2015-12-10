@@ -32,7 +32,7 @@ export default class ViewController {
 		this.mineCountLabel = document.getElementById('label-mine-count');
 		this.difficultyInput = document.getElementById('select-difficulty');
 
-		this.difficulty = "beginner";
+		this.difficulty = this.difficultyInput.value;
 		this._totalMines = 10;
 		this.resizeCanvas();
 		this.newGame();
